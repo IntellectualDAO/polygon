@@ -63,7 +63,7 @@ contract Intellectual is ERC721, Ownable {
     }
 
     function tokenURI(uint256 tokenId) public view override(ERC721) returns (string memory) {
-        require(tokenId != 0, "Intellectual: tokenId invalid");
+        require(tokenId == 0, "Intellectual: tokenId invalid");
         return baseTokenURI;
     }
 
