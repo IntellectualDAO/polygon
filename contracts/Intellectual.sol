@@ -7,9 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @title Shares in a physical item
 contract Intellectual is ERC721, Ownable {
 
-    uint8 internal immutable v;
-    bytes32 internal immutable r;
-    bytes32 internal immutable s;
+    uint8 private immutable v;
+    bytes32 private immutable r;
+    bytes32 private immutable s;
     address public author;
     address public currentHolder;
 
@@ -55,7 +55,6 @@ contract Intellectual is ERC721, Ownable {
     function _baseURI()
         internal
         view
-        virtual
         override(ERC721)
         returns (string memory)
     {
