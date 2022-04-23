@@ -31,7 +31,7 @@ contract Intellectual is ERC721, Ownable {
         v = _v;
         r = _r;
         s = _s;
-        _safeMint(address(this), 0);
+        _safeMint(msg.sender, 0);
     }
 
     modifier notAuthered() {
@@ -73,8 +73,9 @@ contract Intellectual is ERC721, Ownable {
         return "SUCCESS";
     }
 
-    function _mint(address to, uint256 tokenId) internal pure override(ERC721) {
-        revert("Intellectual: this method is not supported");
+    function _mint(address to, uint256 tokenId) internal override(ERC721) {
+        require(tokenId == 0, "Intellectual: only a single token can be minted");
+        super._mint(to, tokenId);
     }
 
 }
