@@ -71,6 +71,4 @@ contract Intellectual is ERC721, Ownable {
         revert("Intellectual: this method is not supported");
     }
 
-    
-
 }
