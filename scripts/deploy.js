@@ -13,8 +13,8 @@ HARDHAT_MAX_MEMORY: Sets the maximum amount of memory that Hardhat can use.
 
 module.exports = async (name, symbol, getSignature) => {
     const {v, r, s} = await getSignature();
-    const Intellectual = hre.ethers.getContractFactory("Intellectual");
-    const intellectual = Intellectual.deploy(name, symbol, v, r, s);
+    const Intellectual = await hre.ethers.getContractFactory("Intellectual");
+    const intellectual = await Intellectual.deploy(name, symbol, v, r, s);
     await intellectual.deployed();
     return intellectual;
 }
