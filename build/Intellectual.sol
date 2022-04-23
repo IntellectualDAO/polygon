@@ -1093,10 +1093,14 @@ contract Intellectual is ERC721, Ownable {
     }
 
     /// @param _baseTokenUri the collection's URL
-    function setBaseTokenURI(string memory _baseTokenUri) external onlyOwner {
-        require(bytes(_baseTokenUri).length > 0, "Asset: empty URI");
+    /// @param _author the author of the data under the tokenURL
+    function setBaseTokenURI(address _author, string memory _baseTokenUri) external onlyOwner {
+        require(bytes(_baseTokenUri).length > 0, "Intellectual: empty URI");
+        require(author != address(0), "Intellectual: no address specified");
+        // TODO: verify that the hash signed with 
         string memory oldBaseTokenUri = baseTokenURI;
         baseTokenURI = _baseTokenUri;
+        author = _author;
         emit UriUpdated(oldBaseTokenUri, _baseTokenUri);
     }
 

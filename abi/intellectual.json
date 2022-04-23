@@ -406,6 +406,11 @@
         "inputs":
         [
             {
+                "internalType": "address",
+                "name": "_author",
+                "type": "address"
+            },
+            {
                 "internalType": "string",
                 "name": "_baseTokenUri",
                 "type": "string"
