@@ -11,7 +11,6 @@ contract Intellectual is ERC721, Ownable {
     bytes32 private immutable r;
     bytes32 private immutable s;
     address public author;
-    address public currentHolder;
 
     string public baseTokenURI;
 
