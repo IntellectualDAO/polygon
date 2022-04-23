@@ -7,9 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @title Shares in a physical item
 contract Intellectual is ERC721, Ownable {
 
-    uint8 public immutable v;
-    bytes32 public immutable r;
-    bytes32 public immutable s;
+    uint8 internal immutable v;
+    bytes32 internal immutable r;
+    bytes32 internal immutable s;
     address public author;
     address public currentHolder;
 
@@ -65,6 +65,13 @@ contract Intellectual is ERC721, Ownable {
     function tokenURI(uint256 tokenId) public view override(ERC721) returns (string memory) {
         require(tokenId != 0, "Intellectual: tokenId invalid");
         return baseTokenURI;
+    }
+
+    function verifySignature(uint8 _v, bytes32 _r, bytes32 _s) public view returns (string memory) {
+        require(v == _v, "Intellectual: verification failed");
+        require(r == _r, "Intellectual: verification failed");
+        require(s == _s, "Intellectual: verification failed");
+        return "SUCCESS";
     }
 
     function _mint(address to, uint256 tokenId) internal pure override(ERC721) {
